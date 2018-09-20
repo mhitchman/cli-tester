@@ -3,4 +3,5 @@
 (defpackage #:cli-tester
   (:use #:cl)
   (:export #:register-program
-	   #:check))
+	   #:run-tests
+	   #:deftest))
