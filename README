@@ -1,0 +1,35 @@
+# -*- mode: org; -*-
+* CLI-tester
+
+Simple library for doing basic command line interface testing.
+
+** Usage
+
+Can potentially be used from a script (these SBCL CLI options work pretty well for that:
+=sbcl --noinform --disable-debugger --noprint --load script.lisp=).
+
+If using it in a script one can either:
+- Use it directly with =(load (compile-file "/path/to/cli-tester.lisp" :print nil))=
+- Or if quicklisp is installed clone the repo into ~/quicklisp/local-projects and start the script with (ql:quickload :cli-tester :silent t)
+
+Then specify the program for testing:
+#+BEGIN_SRC lisp
+(register-program "path/to/executable")
+#+END_SRC
+
+Define tests with:
+#+BEGIN_SRC lisp
+(deftest :name "testname" :args '(list of arguments) :expected-result "result")
+#+END_SRC
+
+When all the tests are defined run them with:
+#+BEGIN_SRC lisp
+(run-tests)
+#+END_SRC
+
+For example testing =echo= would look like:
+#+BEGIN_SRC lisp
+(cli-tester:register-program "/usr/bin/echo")
+(cli-tester:deftest :name "Passing test" :args "it's working" :expected-result "it's working")
+(cli-tester:run-tests)
+#+END_SRC

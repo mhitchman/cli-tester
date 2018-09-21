@@ -1,5 +1,11 @@
 ;;;; cli-tester.lisp
 
+(defpackage #:cli-tester
+  (:use #:cl)
+  (:export #:register-program
+	   #:run-tests
+	   #:deftest))
+
 (in-package #:cli-tester)
 
 (defparameter *program-to-run* nil)

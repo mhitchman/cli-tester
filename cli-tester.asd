@@ -6,5 +6,4 @@
   :license  "MIT"
   :version "0.0.1"
   :serial t
-  :components ((:file "package")
-               (:file "cli-tester")))
+  :components ((:file "cli-tester")))
